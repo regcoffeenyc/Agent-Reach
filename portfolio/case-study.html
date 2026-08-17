@@ -1,0 +1,394 @@
+<title>Repurpose</title>
+<style>
+  :root {
+    --paper:      #EEF0EC;
+    --surface:    #F8F9F6;
+    --ink:        #161A17;
+    --ink-muted:  #5C645E;
+    --rule:       #D3D8D1;
+    --rule-soft:  #E2E6E0;
+    --fail:       #A82520;
+    --fail-bg:    #F6E7E5;
+    --pass:       #3B6647;
+    --pass-bg:    #E6EDE6;
+
+    --mono: "SF Mono", "IBM Plex Mono", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --serif: "Iowan Old Style", "Charter", Georgia, "Times New Roman", serif;
+
+    --measure: 66ch;
+    --step-0: 1rem;
+    --step-1: 1.18rem;
+    --step-2: 1.5rem;
+    --step-3: 2.1rem;
+    --step-4: clamp(2.4rem, 6vw, 3.4rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:     #131614;
+      --surface:   #1C201D;
+      --ink:       #E7EAE5;
+      --ink-muted: #98A19A;
+      --rule:      #2F352F;
+      --rule-soft: #242A25;
+      --fail:      #E8726B;
+      --fail-bg:   #2B1B1A;
+      --pass:      #83B490;
+      --pass-bg:   #1A241C;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:     #131614;
+    --surface:   #1C201D;
+    --ink:       #E7EAE5;
+    --ink-muted: #98A19A;
+    --rule:      #2F352F;
+    --rule-soft: #242A25;
+    --fail:      #E8726B;
+    --fail-bg:   #2B1B1A;
+    --pass:      #83B490;
+    --pass-bg:   #1A241C;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: var(--step-0);
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 74ch;
+    margin: 0 auto;
+    padding: clamp(2rem, 6vw, 4.5rem) clamp(1.15rem, 5vw, 2rem) 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.75rem;
+  }
+
+  h1, h2, h3 { font-family: var(--mono); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: var(--step-4); line-height: 1.06; letter-spacing: -0.025em; }
+  h2 { font-size: var(--step-2); letter-spacing: -0.015em; }
+  h3 { font-size: var(--step-1); letter-spacing: -0.01em; }
+  p  { margin: 0; max-width: var(--measure); }
+
+  a { color: var(--ink); text-decoration-color: var(--rule); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--fail); outline-offset: 3px; border-radius: 1px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  section { display: flex; flex-direction: column; gap: 1.15rem; }
+
+  .lede { font-size: var(--step-1); line-height: 1.55; }
+
+  /* ---- hero ---- */
+  .hero { gap: 1.6rem; }
+  .hero-rule { height: 2px; background: var(--fail); border: 0; margin: 0; }
+
+  /* ---- terminal / evidence ---- */
+  .console {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    line-height: 1.75;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--fail);
+    padding: 1.1rem 1.2rem;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+  }
+  .console .f { color: var(--fail); font-weight: 600; }
+  .console .w { color: var(--ink-muted); }
+  .console .dim { color: var(--ink-muted); }
+
+  /* ---- status chips ---- */
+  .chip {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15em 0.5em;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .chip.fail { color: var(--fail); background: var(--fail-bg); }
+  .chip.warn { color: var(--ink-muted); background: var(--rule-soft); }
+
+  /* ---- table ---- */
+  .table-scroll { overflow-x: auto; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 34rem;
+    font-family: var(--serif);
+    font-size: 0.94rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.66rem 0.9rem 0.66rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule);
+  }
+  td:first-child { font-family: var(--mono); font-size: 0.84rem; white-space: nowrap; }
+  tbody tr:last-child td { border-bottom: 0; }
+
+  /* ---- numbered sequence: real order, not decoration ---- */
+  ol.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; counter-reset: s; }
+  ol.steps li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 2.6rem 1fr;
+    gap: 0 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  ol.steps li:first-child { border-top: 1px solid var(--rule); }
+  ol.steps li::before {
+    content: counter(s, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--fail);
+    letter-spacing: 0.05em;
+    padding-top: 0.28rem;
+  }
+  ol.steps h3 { margin-bottom: 0.2rem; }
+  ol.steps p { font-size: 0.95rem; color: var(--ink-muted); }
+
+  /* ---- notes ---- */
+  .notes { display: flex; flex-direction: column; gap: 1.4rem; }
+  .note { display: flex; flex-direction: column; gap: 0.35rem; padding-left: 1rem; border-left: 1px solid var(--rule); }
+  .note p { font-size: 0.95rem; color: var(--ink-muted); }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.87em;
+    background: var(--rule-soft);
+    padding: 0.1em 0.34em;
+    border-radius: 2px;
+  }
+
+  footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .disclosure { font-size: 0.85rem; color: var(--ink-muted); font-style: italic; }
+</style>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Reference implementation &middot; content automation</p>
+    <h1>The model drafts.<br>Code decides if it ships.</h1>
+    <hr class="hero-rule">
+    <p class="lede">
+      <strong>Repurpose</strong> turns one source document into content for every channel a client
+      publishes on &mdash; and refuses to hand any of it over until automated checks have signed off.
+      This is the run that matters:
+    </p>
+
+<pre class="console" aria-label="Terminal output showing a failed quality review"><span class="dim">$ repurpose samples/source.md --profile profiles/example.yaml --dry-run</span>
+
+<span class="f">[FAIL]</span> linkedin_post              436 chars, 2 attempt(s)
+        <span class="f">[FAIL]</span> claims_grounded: '47%' does not appear in the source material
+        <span class="f">[FAIL]</span> banned_phrases: contains banned phrase 'it's important to note'
+        <span class="f">[FAIL]</span> required: missing required element 'northwind.example/report'
+<span class="w">[WARN]</span> cross-channel: shares 8+ words verbatim with 'linkedin_post'
+
+Review failed &mdash; nothing here is ready to publish.
+<span class="dim">$ echo $?</span>
+1</pre>
+
+    <p>
+      The model wrote a clean, confident paragraph claiming a 47&percnt; improvement. That number is
+      nowhere in the source document. The gate caught it, tried one rewrite, caught it again, and
+      exited non-zero.
+    </p>
+  </header>
+
+  <section>
+    <p class="eyebrow">The problem</p>
+    <h2>Fluency is not the hard part anymore</h2>
+    <p>
+      Anyone can prompt a model into a passable LinkedIn post. Clients don't stop paying because the
+      writing is bad &mdash; they stop because somewhere in the batch is a statistic nobody can
+      source, or because the tenth post this month opens with the same three sentences as the ninth.
+    </p>
+    <p>
+      Those failures are cheap to make and expensive to find by hand. So this pipeline treats them
+      as build failures. Non-zero exit, no publish, and a scorecard naming exactly what broke.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">What the gate enforces</p>
+    <h2>Six checks, run before a human sees anything</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">Check</th><th scope="col">Severity</th><th scope="col">What it catches</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>claims_grounded</td>
+            <td><span class="chip fail">Fail</span></td>
+            <td>Any number in the draft absent from the source &mdash; the fabricated-statistic failure</td>
+          </tr>
+          <tr>
+            <td>banned_phrases</td>
+            <td><span class="chip fail">Fail</span></td>
+            <td>House-style violations and stock machine register</td>
+          </tr>
+          <tr>
+            <td>length</td>
+            <td><span class="chip fail">Fail</span></td>
+            <td>Platform ceilings and editorial minimums</td>
+          </tr>
+          <tr>
+            <td>required</td>
+            <td><span class="chip fail">Fail</span></td>
+            <td>Missing link, call to action, disclosure, or legal line</td>
+          </tr>
+          <tr>
+            <td>readability</td>
+            <td><span class="chip warn">Warn</span></td>
+            <td>Drift above the audience's reading level</td>
+          </tr>
+          <tr>
+            <td>duplication</td>
+            <td><span class="chip warn">Warn</span></td>
+            <td>Verbatim runs reused across two channels</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Failures block. Warnings inform. The distinction is the whole design: a gate that blocks on
+      everything gets switched off within a week.
+    </p>
+  </section>
+
+  <section>
+    <p class="eyebrow">The loop</p>
+    <h2>Draft, review, repair, decide</h2>
+    <ol class="steps">
+      <li>
+        <div>
+          <h3>Draft</h3>
+          <p>One prompt per channel, built from the client's profile &mdash; voice, audience, brief,
+          and the constraints the gate will later enforce. The model is told the rules before it is
+          judged against them.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Review</h3>
+          <p>Every draft runs through the gate. No API calls, no second model grading the first
+          &mdash; pure functions over the draft, the source, and the rules.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Repair</h3>
+          <p>A failed draft is handed its own scorecard and asked to fix precisely those issues.
+          Most runs self-correct here.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h3>Decide</h3>
+          <p>Still failing after the retry budget? Non-zero exit and a scorecard. The pipeline
+          would rather deliver nothing than deliver something wrong.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">Decisions worth defending</p>
+    <h2>Three choices that carry the design</h2>
+    <div class="notes">
+      <div class="note">
+        <h3>The gate has no model dependency</h3>
+        <p>
+          <code>qa.py</code> imports nothing from the LLM layer. Every check is a pure function over
+          <code>(draft, source, rules)</code>, which is what makes the rules testable and what stops
+          the reviewer inheriting the writer's blind spots.
+        </p>
+      </div>
+      <div class="note">
+        <h3>Client rules extend the defaults, never replace them</h3>
+        <p>
+          Adding one client-specific banned phrase used to silently switch off the nine built-in
+          ones. That was a real bug, caught by a test, and the fix is the more important half:
+          config that fails safe rather than fails quiet.
+        </p>
+      </div>
+      <div class="note">
+        <h3>The offline stub fails on purpose</h3>
+        <p>
+          <code>--dry-run</code> swaps in a stub that fabricates a statistic and reuses source
+          sentences. A demo mode that always passes proves nothing; this one shows the gate
+          working, with no API key and no network.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="eyebrow">Verification</p>
+    <h2>Twenty tests, none of them decorative</h2>
+    <p>
+      The suite covers number normalisation (<code>$1,200,000</code> against <code>1200000</code>),
+      list markers that look like numeric claims, the repair loop firing exactly once, the pipeline
+      giving up after its retry budget, and the CLI's non-zero exit. It runs without a network
+      connection.
+    </p>
+<pre class="console" style="border-left-color: var(--pass);"><span class="dim">$ pytest -q</span>
+....................                          [100%]
+20 passed in 0.06s</pre>
+    <p>
+      Two minutes to clone and see for yourself &mdash; which is the only claim on this page that
+      matters, since every other one is checkable.
+    </p>
+  </section>
+
+  <footer>
+    <p class="eyebrow">Availability</p>
+    <p>
+      I build content and data automations that ship with their own quality gates &mdash; Python,
+      the Claude API, Make.com, n8n. Fixed-scope first engagement, remote, worldwide.
+    </p>
+    <p class="disclosure">
+      Reference implementation, built to be read. &ldquo;Northwind Logistics&rdquo; is a fictional
+      sample profile with invented figures; no client work is represented here.
+    </p>
+  </footer>
+
+</div>
