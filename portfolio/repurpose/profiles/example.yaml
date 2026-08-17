@@ -1,0 +1,41 @@
+client: Northwind Logistics
+voice: >
+  Plain, concrete, faintly dry. Written by an operations person who has done
+  the job. Short sentences. No exclamation marks. Never opens with a question.
+audience: >
+  Warehouse and fleet operations managers at mid-size distributors. Time-poor,
+  sceptical of vendor language, technical enough to want specifics.
+
+# These extend the built-in list rather than replacing it.
+banned_phrases:
+  - revolutionize
+  - seamless
+  - best-in-class
+
+channels:
+  linkedin_post:
+    brief: >
+      A single LinkedIn post. Open with the concrete finding, not a hook
+      question. One idea only. End with the link.
+    rules:
+      min_chars: 400
+      max_chars: 1300
+      max_reading_grade: 9
+      required:
+        - northwind.example/report
+
+  newsletter_section:
+    brief: >
+      One section for the weekly ops newsletter. Subheading, three short
+      paragraphs, no bullet list.
+    rules:
+      min_chars: 700
+      max_chars: 2000
+      max_reading_grade: 10
+
+  seo_meta:
+    brief: >
+      An SEO title (under 60 characters) and meta description (under 155),
+      each on its own line, labelled.
+    rules:
+      max_chars: 260
