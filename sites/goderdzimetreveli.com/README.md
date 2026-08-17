@@ -89,20 +89,57 @@ Full instructions in `docs/10-hosting-and-domain-setup.md`. Summary:
 cp -r theme/goderdzi-metreveli /path/to/wp-content/themes/
 wp theme activate goderdzi-metreveli
 
-# 2. Permalinks
-wp option update permalink_structure '/articles/%postname%/'
-
-# 3. Content
+# 2. Content
 wp plugin install wordpress-importer --activate
 wp import import/goderdzi-metreveli.wxr.xml --authors=create
 
-# 4. Settings > Reading
-#    Front page:  "Goderdzi Metreveli"
-#    Posts page:  "Articles and Insights"
+# 3. Provisioning — REQUIRED
+#    The import creates pages and posts but no menus, no front-page assignment,
+#    and leaves WordPress's default content in place.
+bash tools/provision.sh
+
+# 4. wp-config.php — REQUIRED
+#    define( 'WP_ENVIRONMENT_TYPE', 'production' );   // 'staging' on staging
 
 # 5. Customizer > Entity and structured data
 #    Set the CONFIRMED LinkedIn URL and the portrait image.
 ```
+
+## Verification status
+
+The full sequence above has been executed end-to-end against **WordPress 7.0 on a
+clean database**, not just linted:
+
+| Check | Result |
+|---|---|
+| Import | 42/42 items, no errors |
+| URLs returning 200 | **48 / 48** (38 pages, 5 sitemaps, robots.txt, search, 404) |
+| PHP notices, warnings, fatals | **zero** across every template |
+| One `<h1>` per page | 42/42 |
+| Canonical + `x-default` present | 42/42 |
+| JSON-LD parses, Person node present | 42/42 |
+| `alumniOf` / `award` / `worksFor` / `affiliation` absent | 42/42 |
+| hreflang reciprocal on all 13 pairs | pass |
+| No dangling hreflang on unpaired pages | pass |
+| robots policy (5 indexed, 6 noindex cases) | 11/11 correct |
+| `<title>` matches `docs/02` | pass |
+| External hosts requested | **none** — 1 stylesheet, 1 script, all self-hosted |
+
+Four real bugs were found by running it and are fixed:
+
+1. **Environment detection** — the hostname heuristic overrode an explicit
+   `WP_ENVIRONMENT_TYPE = 'production'`. A live site on a `*.kinsta.cloud` or
+   `*.wpengine.com` domain would have been permanently `noindex` with
+   `Disallow: /` and 404 sitemaps, with nothing in wp-admin explaining why.
+2. **Georgian pages served English navigation** — one menu location for both
+   languages, so every Georgian nav link led to an English page. Now per-language
+   menu locations with a fallback.
+3. **Duplicate breadcrumb** — Georgian pages showed "Home" twice
+   (`მთავარი › გოდერძი მეტრეველი › …`) because the `/ka/` parent page is itself
+   the Georgian home.
+4. **No navigation at all after import**, plus WordPress's "Hello world!" post
+   appearing in the homepage latest-articles block and the sitemap. Fixed by
+   `tools/provision.sh`, which did not previously exist.
 
 Regenerate the import after editing any markdown:
 

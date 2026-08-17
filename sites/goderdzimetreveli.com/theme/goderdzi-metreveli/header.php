@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<nav id="gm-primary-nav" class="gm-nav" aria-label="<?php esc_attr_e( 'Primary', 'gm' ); ?>">
 			<?php
 			wp_nav_menu( array(
-				'theme_location' => 'primary',
+				'theme_location' => gm_menu_location( 'primary' ),
 				'container'      => false,
 				'menu_class'     => 'gm-nav__list',
 				'depth'          => 2,

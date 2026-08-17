@@ -85,6 +85,20 @@ function gm_translation_id( int $post_id ): int {
 }
 
 /**
+ * Resolve a menu location for the current language.
+ *
+ * Falls back to the English location when no Georgian menu has been assigned, so
+ * a partially configured site still renders navigation rather than nothing.
+ */
+function gm_menu_location( string $base ): string {
+	if ( 'ka' !== gm_current_lang() ) {
+		return $base;
+	}
+	$ka = $base . '_ka';
+	return has_nav_menu( $ka ) ? $ka : $base;
+}
+
+/**
  * A single-line site-wide fallback description.
  */
 function gm_default_description(): string {
@@ -110,22 +124,50 @@ function gm_field( string $key, ?int $post_id = null ): string {
  * A second safety net behind the host-level protections described in doc 10 —
  * an indexed staging copy would compete with the live site for the person's own
  * name, which is the exact failure this project exists to prevent.
+ *
+ * Precedence matters, and an earlier version of this function got it wrong:
+ *
+ *   1. An EXPLICIT environment declaration always wins. If the operator has set
+ *      WP_ENVIRONMENT_TYPE (constant or env var), that is authoritative in both
+ *      directions — including 'production', which short-circuits the hostname
+ *      heuristic below.
+ *   2. Only when nothing is declared do we guess from the hostname.
+ *
+ * Without rule 1, a site legitimately running production on a host-provided
+ * domain (*.kinsta.cloud, *.wpengine.com — common before a custom domain is
+ * attached, and sometimes permanently) would be forced to noindex with a
+ * Disallow: / robots.txt and 404 sitemaps, and nothing in wp-admin would explain
+ * why. That failure is silent, total, and very hard to diagnose from the symptom.
  */
 function gm_is_non_production(): bool {
-	if ( defined( 'WP_ENVIRONMENT_TYPE' ) && in_array( WP_ENVIRONMENT_TYPE, array( 'local', 'development', 'staging' ), true ) ) {
-		return true;
-	}
-	if ( function_exists( 'wp_get_environment_type' ) && 'production' !== wp_get_environment_type() ) {
-		return true;
+	$declared = '';
+	if ( defined( 'WP_ENVIRONMENT_TYPE' ) && WP_ENVIRONMENT_TYPE ) {
+		$declared = strtolower( (string) WP_ENVIRONMENT_TYPE );
+	} elseif ( getenv( 'WP_ENVIRONMENT_TYPE' ) ) {
+		$declared = strtolower( (string) getenv( 'WP_ENVIRONMENT_TYPE' ) );
 	}
 
-	$host = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+	if ( 'production' === $declared ) {
+		// Operator has said so explicitly. Trust it.
+		return (bool) apply_filters( 'gm_is_non_production', false );
+	}
+
+	if ( in_array( $declared, array( 'local', 'development', 'staging' ), true ) ) {
+		return (bool) apply_filters( 'gm_is_non_production', true );
+	}
+
+	// Nothing declared — fall back to guessing from the hostname.
+	$non_production = false;
+	$host           = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );
+
 	foreach ( array( 'staging', 'dev.', '.test', '.local', 'localhost', 'kinsta.cloud', 'wpengine.com', 'cloudwaysapps.com' ) as $needle ) {
 		if ( str_contains( $host, $needle ) ) {
-			return true;
+			$non_production = true;
+			break;
 		}
 	}
-	return false;
+
+	return (bool) apply_filters( 'gm_is_non_production', $non_production );
 }
 
 /**

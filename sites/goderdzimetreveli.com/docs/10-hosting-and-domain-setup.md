@@ -128,10 +128,19 @@ wp option update blogdescription 'Regenerative Agriculture and Almond Farming'
 wp plugin install wordpress-importer --activate
 wp import ../../../sites/goderdzimetreveli.com/import/goderdzi-metreveli.wxr.xml --authors=create
 
-# 7. Menus, after import
-wp menu create "Primary"
-wp menu location assign Primary primary
+# 7. Provisioning — REQUIRED. The import creates pages and posts but no menus,
+#    no front-page assignment, and leaves WordPress's default content in place.
+bash /path/to/sites/goderdzimetreveli.com/tools/provision.sh
 ```
+
+`provision.sh` sets permalinks, assigns the front page and posts page, deletes
+"Sample Page" / "Hello world!" / the default comment, and builds all six menus —
+three English and three Georgian — with short navigation labels. It is idempotent;
+re-running rebuilds the menus rather than duplicating them.
+
+This whole sequence has been executed end-to-end against WordPress 7.0 on a clean
+database, and all 48 URLs return 200 with no PHP notices. See the verification
+notes in the README.
 
 Regenerate the WXR from the markdown at any time:
 
@@ -139,13 +148,30 @@ Regenerate the WXR from the markdown at any time:
 python3 sites/goderdzimetreveli.com/tools/build_wxr.py
 ```
 
-### Hardening
+### Required wp-config.php entries
 
 ```php
 // wp-config.php
+
+// REQUIRED. The theme treats an explicit value as authoritative, in both
+// directions. Set 'production' on live and 'staging' on staging.
+//
+// If you omit this AND your domain contains kinsta.cloud, wpengine.com,
+// cloudwaysapps.com or "staging", the theme falls back to a hostname guess and
+// forces noindex + Disallow: / + 404 sitemaps. That is correct for staging and
+// catastrophic for a live site on a host-provided domain — so declare it.
+define( 'WP_ENVIRONMENT_TYPE', 'production' );
+
 define( 'DISALLOW_FILE_EDIT', true );
 define( 'WP_AUTO_UPDATE_CORE', 'minor' );
 define( 'FORCE_SSL_ADMIN', true );
+```
+
+The environment detection is also filterable if you need to override it for an
+unusual setup:
+
+```php
+add_filter( 'gm_is_non_production', fn() => false );
 ```
 
 Plus: unique admin username (never `admin`), 2FA on all admin accounts, XML-RPC

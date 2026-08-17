@@ -42,8 +42,26 @@ function gm_breadcrumb_items(): array {
 	}
 
 	if ( is_page() ) {
+		/*
+		 * Georgian pages are children of the /ka/ page so that their URL paths
+		 * nest correctly. That page IS the Georgian home, and it is already the
+		 * first crumb — so walking ancestors naively renders "Home" twice, as
+		 * "მთავარი › გოდერძი მეტრეველი › …". Skip any ancestor that is the
+		 * language home, and skip the site front page for the same reason.
+		 */
+		$lang_home_id = 0;
+		if ( $ka ) {
+			$ka_home      = get_page_by_path( 'ka' );
+			$lang_home_id = $ka_home ? (int) $ka_home->ID : 0;
+		}
+		$front_id = (int) get_option( 'page_on_front' );
+
 		$ancestors = array_reverse( get_post_ancestors( (int) get_the_ID() ) );
 		foreach ( $ancestors as $ancestor_id ) {
+			$ancestor_id = (int) $ancestor_id;
+			if ( $ancestor_id === $lang_home_id || $ancestor_id === $front_id ) {
+				continue;
+			}
 			$items[] = array(
 				'label' => wp_strip_all_tags( (string) get_the_title( $ancestor_id ) ),
 				'url'   => (string) get_permalink( $ancestor_id ),
@@ -56,8 +74,12 @@ function gm_breadcrumb_items(): array {
 		 * information architecture rather than the flat URL.
 		 */
 		$pillars = array(
+			// English.
 			'regenerative-agriculture', 'almond-orchards', 'deep-ripping',
 			'irrigation-infrastructure', 'mechanization', 'almond-processing-export',
+			// Georgian.
+			'regeneratsiuli-sofmeurneoba', 'nushis-baghebi', 'ghrma-gafkhviereba',
+			'irigatsia-infrastruktura', 'mekanizatsia', 'gadamushaveba-eksporti',
 		);
 		$slug = (string) get_post_field( 'post_name', (int) get_the_ID() );
 		if ( in_array( $slug, $pillars, true ) ) {

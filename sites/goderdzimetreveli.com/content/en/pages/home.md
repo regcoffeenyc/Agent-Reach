@@ -1,6 +1,10 @@
 ---
 title: "Goderdzi Metreveli"
-slug: ""
+# Explicit slug. Left empty originally, but the WordPress importer then
+# auto-generates one from the title, which makes the front page impossible to
+# locate deterministically during provisioning. WordPress 301-redirects /home/
+# to / once this page is set as page_on_front, so the slug never appears in a URL.
+slug: "home"
 type: page
 lang: en
 template: front-page

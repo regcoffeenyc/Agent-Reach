@@ -22,7 +22,7 @@ $gm_ka = 'ka' === gm_current_lang();
 				<h2 class="gm-footer__heading"><?php echo esc_html( $gm_ka ? 'თემები' : 'Topics' ); ?></h2>
 				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'footer_topics',
+					'theme_location' => gm_menu_location( 'footer_topics' ),
 					'container'      => false,
 					'menu_class'     => 'gm-footer__list',
 					'depth'          => 1,
@@ -35,7 +35,7 @@ $gm_ka = 'ka' === gm_current_lang();
 				<h2 class="gm-footer__heading"><?php echo esc_html( $gm_ka ? 'შესახებ' : 'About' ); ?></h2>
 				<?php
 				wp_nav_menu( array(
-					'theme_location' => 'footer_about',
+					'theme_location' => gm_menu_location( 'footer_about' ),
 					'container'      => false,
 					'menu_class'     => 'gm-footer__list',
 					'depth'          => 1,

@@ -55,10 +55,22 @@ function gm_setup(): void {
 	add_image_size( 'gm-card', 800, 600, true );
 	add_image_size( 'gm-portrait', 900, 1125, true );
 
+	/*
+	 * Menus are registered per language. Without this, /ka/ pages render the
+	 * English navigation and every nav link sends a Georgian reader to an English
+	 * page — which contradicts the linking rule in docs/03 §7 and is the first
+	 * thing a Georgian visitor would notice.
+	 *
+	 * Polylang manages per-language menus itself when installed; these locations
+	 * are what make the language split work without it.
+	 */
 	register_nav_menus( array(
-		'primary'     => __( 'Primary', 'gm' ),
-		'footer_topics' => __( 'Footer — Topics', 'gm' ),
-		'footer_about'  => __( 'Footer — About', 'gm' ),
+		'primary'          => __( 'Primary (English)', 'gm' ),
+		'footer_topics'    => __( 'Footer — Topics (English)', 'gm' ),
+		'footer_about'     => __( 'Footer — About (English)', 'gm' ),
+		'primary_ka'       => __( 'Primary (Georgian)', 'gm' ),
+		'footer_topics_ka' => __( 'Footer — Topics (Georgian)', 'gm' ),
+		'footer_about_ka'  => __( 'Footer — About (Georgian)', 'gm' ),
 	) );
 
 	// Attachment pages are pure index bloat on a photo-heavy site. Kill them.

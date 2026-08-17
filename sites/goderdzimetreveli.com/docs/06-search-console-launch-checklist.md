@@ -50,6 +50,23 @@ made publicly indexable.
 - [ ] `/sitemap.xml` returns 404 on staging
 - [ ] Search `site:staging-host` on Google and Bing — nothing indexed
 
+### Provisioning
+
+- [ ] `tools/provision.sh` run after the WXR import — the import alone creates
+      **no navigation menus**, does not set the front page, and leaves
+      WordPress's default content in place
+- [ ] "Sample Page", "Hello world!" and the default comment deleted (provision.sh
+      does this; verify, because "Hello world!" otherwise appears in the
+      homepage's latest-articles block and in the sitemap)
+- [ ] Privacy Policy draft deleted or completed
+- [ ] **`WP_ENVIRONMENT_TYPE` set explicitly in `wp-config.php`** — `'production'`
+      on live, `'staging'` on staging. The theme treats an explicit value as
+      authoritative; on hosts whose domain contains `kinsta.cloud`,
+      `wpengine.com`, `cloudwaysapps.com` or `staging`, **omitting it means the
+      site is forced to noindex with `Disallow: /` and 404 sitemaps**
+- [ ] All 6 menus assigned: Primary, Footer Topics, Footer About, and the three
+      Georgian equivalents (`primary_ka`, `footer_topics_ka`, `footer_about_ka`)
+
 ### Structure
 
 - [ ] Permalinks set to `/articles/%postname%/`
@@ -73,6 +90,9 @@ made publicly indexable.
 - [ ] Canonical URL self-references on every page
 - [ ] Breadcrumbs render on every page except the homepage
 - [ ] Verification labels present beside every homepage metric
+- [ ] **Georgian pages show Georgian navigation** and Georgian nav links point at
+      `/ka/` pages, not English ones
+- [ ] Georgian breadcrumbs show `მთავარი` once, not twice
 
 ### hreflang
 
