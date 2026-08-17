@@ -9,7 +9,8 @@ seo_title: "Agricultural Projects and Case Studies | Goderdzi Metreveli"
 meta_description: "Case studies in semi-arid land development and almond value-chain construction in Kakheti, Georgia — what was done, what worked and what did not."
 primary_keyword: "semi-arid agricultural development case study"
 excerpt: "Two detailed case studies, written to include the things that did not work."
-translation_of: "ka-projects"
+# No Georgian counterpart yet — deliberately omitting translation_of so the page
+# emits only hreflang="en" + x-default rather than a dangling annotation.
 ---
 
 Two case studies. Both are written to include the parts that went wrong, because
