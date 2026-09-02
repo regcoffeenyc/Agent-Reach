@@ -1,0 +1,71 @@
+# Hermes Agent profile config — Geo-Tactical Market mail agent
+# Lives at $HERMES_HOME/config.yaml (default ~/.hermes-gtm/config.yaml).
+# Secrets go in .env next to this file, never here.
+
+model:
+  provider: anthropic
+  default: claude-sonnet-4-6        # same model the Make.com agent brains use
+  max_tokens: 8192
+
+fallback_model:
+  provider: anthropic
+  model: claude-haiku-4-5
+
+# One fresh session per run; the skill supplies the procedure, the handoff doc
+# supplies the state. Keep the toolset small: fewer tools, fewer mistakes.
+tools:
+  enabled:
+    - terminal
+    - file
+    - web_search
+  disabled:
+    - browser
+
+approval:
+  dangerous_commands: true
+  write_approval: false             # the handoff doc and extracted files must be writable unattended
+
+skills:
+  write_approval: true              # the agent may not rewrite its own skills unattended
+  inline_shell: false
+  template_vars: true
+
+mcp_servers:
+  # Gmail via the AutoAuth server (OAuth token cached by `npx @gongrzhe/server-gmail-autoauth-mcp auth`).
+  # `tools.include` is a whitelist: send_email, delete_email, batch_delete_emails and the
+  # filter/label mutators are deliberately absent, so the agent cannot send or destroy
+  # anything even if a prompt or an email tells it to.
+  gmail:
+    command: npx
+    args: ["-y", "@gongrzhe/server-gmail-autoauth-mcp"]
+    timeout: 120
+    tools:
+      include:
+        - search_emails
+        - read_email
+        - download_attachment
+        - draft_email
+        - list_email_labels
+        - modify_email
+
+  # Optional read-only Google Drive (search + read). Uploads do not fit through
+  # tool payloads anyway; the skill delivers files to Goderdzi instead.
+  gdrive:
+    enabled: false
+    command: npx
+    args: ["-y", "@isaacphi/mcp-gdrive"]
+    env:
+      GDRIVE_CREDS_DIR: ${HERMES_HOME}/gdrive
+      CLIENT_ID: ${GDRIVE_CLIENT_ID}
+      CLIENT_SECRET: ${GDRIVE_CLIENT_SECRET}
+    tools:
+      include:
+        - gdrive_search
+        - gdrive_read_file
+
+gateway:
+  platforms:
+    - type: telegram
+      token: ${TELEGRAM_BOT_TOKEN}
+      allowed_users:
+        - ${TELEGRAM_USER_ID}     # Goderdzi's numeric Telegram id — nobody else may talk to this bot
