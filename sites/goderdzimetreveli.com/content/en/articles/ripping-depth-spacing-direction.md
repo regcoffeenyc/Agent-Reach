@@ -8,7 +8,7 @@ date: 2026-02-25
 last_reviewed: 2026-08-17
 menu_order: 4
 seo_title: "Deep Ripping Depth, Spacing and Direction for Orchards"
-meta_description: "Setting deep-ripping depth, shank spacing and working direction for orchard establishment — including row alignment, slope and erosion risk, and sequencing with irrigation."
+meta_description: "Setting deep-ripping depth, shank spacing and working direction: row alignment, slope and erosion risk, and sequencing with irrigation."
 primary_keyword: "ripping depth and spacing"
 excerpt: "Three parameters, each with a wrong answer that looks reasonable. Depth is set by the profile, spacing by the soil's fracture behaviour, and direction by the slope before the rows."
 ---

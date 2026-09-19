@@ -6,7 +6,7 @@ lang: en
 template: default
 menu_order: 3
 seo_title: "Selected Achievements | Goderdzi Metreveli"
-meta_description: "Documented achievements in semi-arid land development, almond orchard establishment, processing, export preparation, regenerative transition and agricultural standards."
+meta_description: "Documented work in semi-arid land development, almond orchard establishment, processing, export preparation and the regenerative transition."
 primary_keyword: "Goderdzi Metreveli achievements"
 excerpt: "Eight areas of work, each stating what is documented, what is attributed and what remains unverified."
 translation_of: "ka-achievements"

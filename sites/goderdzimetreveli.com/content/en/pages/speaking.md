@@ -5,7 +5,7 @@ type: page
 lang: en
 template: default
 menu_order: 15
-seo_title: "Agricultural Speaking, Training and Consulting | Goderdzi Metreveli"
+seo_title: "Agricultural Speaking and Training | Goderdzi Metreveli"
 meta_description: "Speaking, training and consulting on almond orchard development, soil preparation, deep ripping, irrigation and semi-arid agriculture. Georgian and English."
 primary_keyword: "agricultural consultant speaker Georgia"
 excerpt: "Topics, formats and what a practical engagement looks like."

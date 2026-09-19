@@ -7,7 +7,7 @@ template: pillar
 cluster: processing-export
 menu_order: 12
 seo_title: "Almond Processing and Export Development in Georgia"
-meta_description: "Primary and secondary almond processing, capacity and harvest logistics, European quality standards, GeoGAP certification and regional processing for independent growers."
+meta_description: "Primary and secondary almond processing, harvest logistics, European quality standards, GeoGAP certification and regional processing for growers."
 primary_keyword: "almond processing Georgia"
 excerpt: "Processing capacity is what determines whether an orchard captures the value it grows."
 translation_of: "ka-processing"

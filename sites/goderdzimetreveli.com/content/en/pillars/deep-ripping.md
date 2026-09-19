@@ -7,7 +7,7 @@ template: pillar
 cluster: soil-preparation
 menu_order: 9
 seo_title: "Deep-Ripping Soil Preparation for Almond Orchards"
-meta_description: "When deep ripping is appropriate, how it differs from subsoiling, identifying restrictive layers, soil-moisture requirements, depth, spacing, direction, and when not to rip."
+meta_description: "When deep ripping is appropriate, how it differs from subsoiling, identifying restrictive layers, moisture, depth, spacing, and when not to rip."
 primary_keyword: "deep-ripping soil preparation"
 excerpt: "The most consequential and least reversible decision in orchard establishment — and the one most often made on assumption rather than evidence."
 translation_of: "ka-deep-ripping"

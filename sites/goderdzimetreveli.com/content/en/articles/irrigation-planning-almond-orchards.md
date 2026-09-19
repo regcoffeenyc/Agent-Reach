@@ -8,7 +8,7 @@ date: 2026-04-08
 last_reviewed: 2026-08-17
 menu_order: 7
 seo_title: "Irrigation Planning for Almond Orchards"
-meta_description: "Designing almond orchard irrigation: sizing to peak demand, distribution uniformity, filtration, scheduling, fertigation and leaching requirement in semi-arid conditions."
+meta_description: "Designing almond orchard irrigation: sizing to peak demand, distribution uniformity, filtration, scheduling, fertigation and leaching requirement."
 primary_keyword: "irrigation systems for almond orchards"
 excerpt: "The design error with the longest consequences is sizing to average demand instead of peak. It fails at exactly the moment yield is set — every year."
 ---

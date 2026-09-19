@@ -5,8 +5,8 @@ type: page
 lang: en
 template: default
 menu_order: 2
-seo_title: "Professional Experience | Goderdzi Metreveli, Agricultural Executive"
-meta_description: "Professional record of Goderdzi Metreveli — senior roles in Georgian agriculture covering orchard development, soil preparation, irrigation, mechanization and almond processing."
+seo_title: "Professional Experience | Goderdzi Metreveli"
+meta_description: "Senior roles in Georgian agriculture covering orchard development, soil preparation, irrigation, mechanization and almond processing."
 primary_keyword: "Goderdzi Metreveli agricultural engineer"
 excerpt: "Senior operational and engineering roles in Georgian agriculture, with each entry marked according to the documentation available."
 translation_of: "ka-experience"

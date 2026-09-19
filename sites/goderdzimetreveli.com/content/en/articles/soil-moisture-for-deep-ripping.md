@@ -8,7 +8,7 @@ date: 2026-02-11
 last_reviewed: 2026-08-17
 menu_order: 3
 seo_title: "Correct Soil Moisture for Deep Ripping"
-meta_description: "Soil moisture determines whether deep ripping fractures soil or smears it. How to judge the moisture window in the field, and why ripping wet is worse than not ripping."
+meta_description: "Soil moisture decides whether deep ripping fractures soil or smears it. How to judge the window in the field, and why ripping wet is worse."
 primary_keyword: "soil moisture for deep ripping"
 excerpt: "Moisture matters more than depth, spacing, machine power or operator skill. Get it wrong and you have paid to create a new restriction."
 ---

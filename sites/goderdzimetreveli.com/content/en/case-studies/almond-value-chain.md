@@ -7,7 +7,7 @@ lang: en
 template: case-study
 menu_order: 2
 seo_title: "Almond Production and Processing Value Chain | Case Study"
-meta_description: "Case study: developing almond production and primary and secondary processing capacity in Georgia, with export-oriented variety selection and regional processing for independent growers."
+meta_description: "Developing almond production and primary and secondary processing in Georgia, with export-oriented varieties and regional processing for growers."
 primary_keyword: "almond value chain development"
 excerpt: "From orchard to processing — why capacity, not area, determines what a crop is worth."
 cs_location: "Sagarejo district, Kakheti, Georgia"

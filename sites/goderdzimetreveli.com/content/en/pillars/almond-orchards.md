@@ -7,7 +7,7 @@ template: pillar
 cluster: almond-orchards
 menu_order: 8
 seo_title: "Large-Scale Almond Orchard Development | Goderdzi Metreveli"
-meta_description: "Planning and managing commercial almond orchards: site assessment, variety selection, soil preparation, irrigation design, harvest planning, machinery and European market preparation."
+meta_description: "Planning and managing commercial almond orchards: site assessment, variety selection, soil preparation, irrigation design, harvest and machinery."
 primary_keyword: "almond orchard development"
 excerpt: "At scale, the binding problems are rarely horticultural. They are problems of sequencing and matching."
 translation_of: "ka-almond-orchards"

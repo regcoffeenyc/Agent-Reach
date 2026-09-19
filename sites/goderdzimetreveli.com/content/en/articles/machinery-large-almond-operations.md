@@ -8,7 +8,7 @@ date: 2026-04-22
 last_reviewed: 2026-08-17
 menu_order: 8
 seo_title: "Machinery Requirements for Large Almond Operations"
-meta_description: "Sizing and selecting machinery for large almond orchards: the harvest chain, capacity matching against processing throughput, compaction management and maintenance capability."
+meta_description: "Sizing machinery for large almond orchards: the harvest chain, capacity matching against processing throughput, compaction and maintenance."
 primary_keyword: "machinery for almond orchards"
 excerpt: "Fleet size is calculated backward from processing throughput, not forward from orchard area. Get that wrong and extra machines just lengthen the queue."
 ---

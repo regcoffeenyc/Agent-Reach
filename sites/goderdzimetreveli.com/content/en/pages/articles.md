@@ -5,7 +5,7 @@ type: page
 lang: en
 template: blog-index
 menu_order: 14
-seo_title: "Technical Articles on Orchard Soil Preparation and Almond Production"
+seo_title: "Technical Articles on Soil Preparation and Almond Growing"
 meta_description: "Technical articles on deep ripping, soil preparation, almond orchard establishment, irrigation, mechanization, erosion control and export standards."
 primary_keyword: "orchard soil preparation articles"
 excerpt: "Technical notes on soil preparation, orchard establishment, irrigation, mechanization and processing — written from field practice."

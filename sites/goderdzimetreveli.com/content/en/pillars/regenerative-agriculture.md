@@ -7,7 +7,7 @@ template: pillar
 cluster: regenerative-agriculture
 menu_order: 7
 seo_title: "Regenerative Agriculture in Georgia | Goderdzi Metreveli"
-meta_description: "Regenerative farming at commercial scale in semi-arid Georgia: erosion control, soil function, organic transition, irrigation efficiency and how improvement is measured."
+meta_description: "Regenerative farming at commercial scale in semi-arid Georgia: erosion control, soil function, organic transition and irrigation efficiency."
 primary_keyword: "regenerative agriculture Georgia"
 excerpt: "Regenerative practice at commercial scale, and the constraints that decide whether it survives contact with a working farm."
 translation_of: "ka-regenerative"

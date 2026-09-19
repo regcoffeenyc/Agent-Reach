@@ -6,8 +6,8 @@ type: page
 lang: en
 template: case-study
 menu_order: 1
-seo_title: "Semi-Arid Agricultural Development in Georgia | Udabno Case Study"
-meta_description: "How low-rainfall, erosion-prone land in Sagarejo, Kakheti was developed into a working agricultural operation from 2017 — soil, water, infrastructure and mechanization."
+seo_title: "Semi-Arid Agricultural Development | Udabno Case Study"
+meta_description: "How low-rainfall, erosion-prone land in Sagarejo, Kakheti became a working agricultural operation from 2017: soil, water, infrastructure."
 primary_keyword: "semi-arid agricultural development Georgia"
 excerpt: "Converting low-rainfall, erosion-prone land in Sagarejo into a working agricultural operation — including the parts that did not work first time."
 cs_location: "Sagarejo district, Kakheti, eastern Georgia"

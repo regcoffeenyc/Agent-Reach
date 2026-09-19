@@ -7,7 +7,7 @@ template: default
 menu_order: 1
 is_profile_page: true
 seo_title: "Biography of Goderdzi Metreveli | Agricultural Executive"
-meta_description: "Biography of Goderdzi Metreveli, Georgian agricultural executive and engineering professional working in almond orchard development, soil preparation and semi-arid agriculture."
+meta_description: "Biography of Goderdzi Metreveli, Georgian agricultural executive working in almond orchard development, soil preparation and semi-arid agriculture."
 primary_keyword: "Goderdzi Metreveli biography"
 excerpt: "Georgian agricultural executive and engineering professional, working on large-scale orchard development, soil preparation and irrigation in semi-arid Kakheti."
 translation_of: "ka-about"

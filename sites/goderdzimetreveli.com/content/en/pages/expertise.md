@@ -5,8 +5,8 @@ type: page
 lang: en
 template: default
 menu_order: 4
-seo_title: "Areas of Expertise | Goderdzi Metreveli, Agricultural Executive"
-meta_description: "Five technical areas: regenerative agriculture in semi-arid conditions, almond orchard development, deep-ripping soil preparation, irrigation infrastructure, and almond processing and export."
+seo_title: "Areas of Expertise | Goderdzi Metreveli"
+meta_description: "Five technical areas: regenerative agriculture in semi-arid conditions, almond orchards, deep-ripping soil preparation, irrigation, processing."
 primary_keyword: "agricultural expertise semi-arid"
 excerpt: "Five areas of technical work, each with a detailed pillar page and supporting articles."
 translation_of: "ka-expertise"

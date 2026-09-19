@@ -8,7 +8,7 @@ date: 2026-05-20
 last_reviewed: 2026-08-17
 menu_order: 10
 seo_title: "Preparing Almond Production for European Markets"
-meta_description: "EU market requirements for almonds: maximum residue levels, aflatoxin control, traceability, hygiene and documentation — and why almost all of it is decided upstream."
+meta_description: "EU market requirements for almonds: maximum residue levels, aflatoxin control, traceability, hygiene and documentation, nearly all decided upstream."
 primary_keyword: "almond export to Europe"
 excerpt: "Almost every EU requirement is met by decisions made in the orchard and in the design of the processing facility. Very little can be fixed at the point of shipment."
 ---

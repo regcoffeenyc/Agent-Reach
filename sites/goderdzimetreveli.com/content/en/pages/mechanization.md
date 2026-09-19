@@ -7,7 +7,7 @@ template: pillar
 cluster: irrigation-infrastructure
 menu_order: 11
 seo_title: "Agricultural Mechanization for Large Orchard Operations"
-meta_description: "Machinery selection for large agricultural operations: high-horsepower tractors, implement matching for heavy soils, harvest machinery chains and maintenance capability."
+meta_description: "Machinery for large agricultural operations: high-horsepower tractors, implement matching for heavy soils, harvest chains and maintenance."
 primary_keyword: "agricultural mechanization"
 excerpt: "Machinery capability sets a hard limit on what soil preparation is possible, and therefore on what a site can become."
 translation_of: "ka-mechanization"

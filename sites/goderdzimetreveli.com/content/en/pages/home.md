@@ -9,8 +9,8 @@ type: page
 lang: en
 template: front-page
 menu_order: 0
-seo_title: "Goderdzi Metreveli | Regenerative Agriculture & Almond Farming"
-meta_description: "Goderdzi Metreveli is an agricultural executive focused on regenerative farming, almond orchards, semi-arid land development, irrigation, mechanization and soil preparation."
+seo_title: "Goderdzi Metreveli | Regenerative Agriculture & Almonds"
+meta_description: "Goderdzi Metreveli is an agricultural executive working in regenerative farming, almond orchards, semi-arid land development and irrigation."
 primary_keyword: "Goderdzi Metreveli"
 translation_of: "ka-home"
 ---

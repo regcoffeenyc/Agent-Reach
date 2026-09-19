@@ -8,7 +8,7 @@ date: 2026-01-28
 last_reviewed: 2026-08-17
 menu_order: 2
 seo_title: "How to Identify a Restrictive Soil Layer or Hardpan"
-meta_description: "Finding and confirming a restrictive soil layer before orchard establishment: digging and reading a soil pit, root evidence, penetrometer use, and what soil maps cannot tell you."
+meta_description: "Finding a restrictive soil layer before planting: digging and reading a soil pit, root evidence, penetrometer use, and what soil maps cannot tell you."
 primary_keyword: "how to identify a restrictive soil layer"
 excerpt: "The evidence is in the ground, and it costs an afternoon and a machine hour to look at. Most people specify soil preparation without doing it."
 ---

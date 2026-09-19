@@ -6,7 +6,7 @@ lang: en
 template: pillar
 cluster: irrigation-infrastructure
 menu_order: 10
-seo_title: "Semi-Arid Agricultural Development in Georgia | Irrigation and Infrastructure"
+seo_title: "Semi-Arid Agricultural Development in Georgia"
 meta_description: "Water supply, irrigation efficiency, drainage, erosion planning, machinery selection and operational infrastructure for large farms in semi-arid conditions."
 primary_keyword: "agricultural water infrastructure"
 excerpt: "On semi-arid land, agriculture is an infrastructure problem before it is an agronomic one."

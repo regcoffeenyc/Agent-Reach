@@ -5,7 +5,7 @@ type: page
 lang: en
 template: default
 menu_order: 17
-seo_title: "Contact Goderdzi Metreveli | Agricultural Consulting and Media"
+seo_title: "Contact Goderdzi Metreveli | Consulting and Media"
 meta_description: "Contact Goderdzi Metreveli for agricultural consulting, orchard development advice, training, speaking engagements and media enquiries. Georgian and English."
 primary_keyword: "contact Goderdzi Metreveli"
 excerpt: "Consulting, training, speaking and media enquiries — in Georgian or English."

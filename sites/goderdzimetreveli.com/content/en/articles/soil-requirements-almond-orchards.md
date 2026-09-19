@@ -8,7 +8,7 @@ date: 2026-03-25
 last_reviewed: 2026-08-17
 menu_order: 6
 seo_title: "Soil Requirements for Commercial Almond Orchards"
-meta_description: "What almonds need from soil: depth, drainage, texture, pH, salinity and sodicity tolerance — and how to assess a site before committing to a twenty-five-year planting."
+meta_description: "What almonds need from soil: depth, drainage, texture, pH, salinity and sodicity tolerance, and how to assess a site before a 25-year planting."
 primary_keyword: "soil requirements for almond orchards"
 excerpt: "Almonds are unforgiving about two things: waterlogging and shallow rooting depth. Both are soil properties you assess before planting or live with afterwards."
 ---
