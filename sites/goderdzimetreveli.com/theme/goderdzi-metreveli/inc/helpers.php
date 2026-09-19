@@ -180,8 +180,21 @@ function gm_social_image(): string {
 			return (string) $src[0];
 		}
 	}
-	$fallback = (string) get_theme_mod( 'gm_default_share_image', '' );
-	return $fallback ?: GM_URI . '/assets/img/share-default.jpg';
+	$fallback = trim( (string) get_theme_mod( 'gm_default_share_image', '' ) );
+	if ( $fallback ) {
+		return $fallback;
+	}
+
+	/*
+	 * The bundled default, checked on disk. Returning this path unconditionally is
+	 * how every page without a featured image ended up advertising an og:image that
+	 * 404s. Callers in inc/seo.php already guard on an empty string and omit the tag.
+	 */
+	if ( file_exists( GM_DIR . '/assets/img/share-default.jpg' ) ) {
+		return GM_URI . '/assets/img/share-default.jpg';
+	}
+
+	return '';
 }
 
 /**

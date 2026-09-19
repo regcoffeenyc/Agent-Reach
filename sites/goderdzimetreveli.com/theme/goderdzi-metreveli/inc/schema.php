@@ -206,6 +206,16 @@ function gm_structured_data(): void {
 					'height' => $src[2],
 				);
 			}
+		} else {
+			/*
+			 * Google requires an image for Article rich results, so an article
+			 * published before its photography is ready was ineligible. Falls back
+			 * to the share image; gm_social_image() returns '' when none is on disk.
+			 */
+			$fallback = gm_social_image();
+			if ( $fallback ) {
+				$article['image'] = $fallback;
+			}
 		}
 
 		$terms = get_the_terms( get_the_ID(), 'category' );
