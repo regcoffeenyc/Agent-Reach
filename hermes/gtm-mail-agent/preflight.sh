@@ -5,7 +5,16 @@
 set -euo pipefail
 
 PROFILE="${1:-gtm}"
-HOME_DIR="${HERMES_HOME:-$HOME/.hermes-$PROFILE}"
+# Hermes >= 0.21 keeps profiles under ~/.hermes/profiles/<name>; older builds used
+# ~/.hermes-<name>. Honour HERMES_HOME, else prefer whichever exists.
+HOME_DIR="${HERMES_HOME:-}"
+if [ -z "$HOME_DIR" ]; then
+  if [ -d "$HOME/.hermes/profiles/$PROFILE" ]; then
+    HOME_DIR="$HOME/.hermes/profiles/$PROFILE"
+  else
+    HOME_DIR="$HOME/.hermes-$PROFILE"
+  fi
+fi
 fail=0
 say()  { printf '   %s\n' "$*"; }
 bad()  { printf 'FAIL %s\n' "$*"; fail=1; }

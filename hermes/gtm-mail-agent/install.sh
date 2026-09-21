@@ -6,7 +6,16 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROFILE="${1:-gtm}"
-HOME_DIR="${HERMES_HOME:-$HOME/.hermes-$PROFILE}"
+# Hermes >= 0.21 keeps profiles under ~/.hermes/profiles/<name>; older builds used
+# ~/.hermes-<name>. Honour HERMES_HOME, else prefer whichever exists.
+HOME_DIR="${HERMES_HOME:-}"
+if [ -z "$HOME_DIR" ]; then
+  if [ -d "$HOME/.hermes/profiles/$PROFILE" ]; then
+    HOME_DIR="$HOME/.hermes/profiles/$PROFILE"
+  else
+    HOME_DIR="$HOME/.hermes-$PROFILE"
+  fi
+fi
 
 command -v hermes >/dev/null || { echo "hermes CLI not found. Install Hermes Agent first: https://hermes-agent.nousresearch.com/docs/"; exit 1; }
 command -v npx    >/dev/null || { echo "npx not found. Install Node.js 18+ (the Gmail MCP server runs via npx)."; exit 1; }
@@ -14,6 +23,11 @@ command -v npx    >/dev/null || { echo "npx not found. Install Node.js 18+ (the 
 echo "== profile: $PROFILE  ($HOME_DIR)"
 if ! hermes profile list 2>/dev/null | grep -qw "$PROFILE"; then
   hermes profile create "$PROFILE"
+  # the CLI decides the layout; re-resolve now that the profile exists
+  if [ -z "${HERMES_HOME:-}" ] && [ -d "$HOME/.hermes/profiles/$PROFILE" ]; then
+    HOME_DIR="$HOME/.hermes/profiles/$PROFILE"
+    echo "   profile dir: $HOME_DIR"
+  fi
 fi
 mkdir -p "$HOME_DIR/skills/gtm-mail-review" "$HOME_DIR/gtm/work" "$HOME_DIR/memories" "$HOME_DIR/gmail"
 chmod 700 "$HOME_DIR" "$HOME_DIR/gmail"
