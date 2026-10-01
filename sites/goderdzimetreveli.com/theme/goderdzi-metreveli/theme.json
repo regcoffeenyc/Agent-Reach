@@ -1,0 +1,86 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "42rem",
+      "wideSize": "72rem"
+    },
+    "color": {
+      "custom": false,
+      "customGradient": false,
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "ink",     "color": "#1c1a17", "name": "Ink" },
+        { "slug": "graphite","color": "#4a4640", "name": "Graphite" },
+        { "slug": "paper",   "color": "#faf8f5", "name": "Paper" },
+        { "slug": "sand",    "color": "#f0ebe3", "name": "Sand" },
+        { "slug": "line",    "color": "#ddd5c8", "name": "Rule" },
+        { "slug": "soil",    "color": "#6b4f3a", "name": "Soil" },
+        { "slug": "clay",    "color": "#a4552d", "name": "Clay" },
+        { "slug": "olive",   "color": "#5f6b47", "name": "Olive" }
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "dropCap": false,
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "slug": "serif",
+          "name": "Serif",
+          "fontFamily": "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, \"Book Antiqua\", Georgia, \"Noto Serif Georgian\", \"Sylfaen\", serif"
+        },
+        {
+          "slug": "sans",
+          "name": "Sans",
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", \"Noto Sans Georgian\", Arial, sans-serif"
+        },
+        {
+          "slug": "mono",
+          "name": "Mono",
+          "fontFamily": "ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, monospace"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small",   "size": "0.875rem", "name": "Small",   "fluid": false },
+        { "slug": "medium",  "size": "1.0625rem","name": "Medium",  "fluid": false },
+        { "slug": "large",   "size": "1.25rem",  "name": "Large",   "fluid": { "min": "1.125rem", "max": "1.3125rem" } },
+        { "slug": "x-large", "size": "1.75rem",  "name": "Heading", "fluid": { "min": "1.5rem",   "max": "2rem" } },
+        { "slug": "xx-large","size": "2.5rem",   "name": "Display", "fluid": { "min": "2rem",     "max": "3.25rem" } }
+      ]
+    },
+    "spacing": {
+      "units": ["rem", "%", "vw"],
+      "spacingSizes": [
+        { "slug": "20", "size": "0.75rem", "name": "1" },
+        { "slug": "30", "size": "1.25rem", "name": "2" },
+        { "slug": "40", "size": "2rem",    "name": "3" },
+        { "slug": "50", "size": "3.5rem",  "name": "4" },
+        { "slug": "60", "size": "5.5rem",  "name": "5" }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var(--wp--preset--color--paper)",
+      "text": "var(--wp--preset--color--ink)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--sans)",
+      "fontSize": "var(--wp--preset--font-size--medium)",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "link": {
+        "color": { "text": "var(--wp--preset--color--soil)" }
+      },
+      "h1": { "typography": { "fontFamily": "var(--wp--preset--font-family--serif)", "fontWeight": "600", "lineHeight": "1.12" } },
+      "h2": { "typography": { "fontFamily": "var(--wp--preset--font-family--serif)", "fontWeight": "600", "lineHeight": "1.2" } },
+      "h3": { "typography": { "fontFamily": "var(--wp--preset--font-family--serif)", "fontWeight": "600", "lineHeight": "1.25" } }
+    }
+  }
+}

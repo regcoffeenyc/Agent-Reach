@@ -1,0 +1,117 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://goderdzimetreveli.com/#person",
+      "name": "Goderdzi Metreveli",
+      "url": "https://goderdzimetreveli.com/about/",
+      "description": "Georgian agricultural executive and engineering professional working in large-scale orchard development, soil preparation, irrigation infrastructure, agricultural mechanization and regenerative farming in semi-arid conditions.",
+      "jobTitle": "Agricultural Executive",
+      "knowsAbout": [
+        "Regenerative agriculture",
+        "Almond orchard development",
+        "Semi-arid land development",
+        "Deep ripping and subsoil preparation",
+        "Orchard soil preparation",
+        "Irrigation infrastructure",
+        "Agricultural mechanization",
+        "Erosion control",
+        "Almond processing",
+        "Agricultural export standards"
+      ],
+      "nationality": {
+        "@type": "Country",
+        "name": "Georgia"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/CONFIRMED-PROFILE-SLUG/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://goderdzimetreveli.com/#website",
+      "url": "https://goderdzimetreveli.com/",
+      "name": "Goderdzi Metreveli",
+      "publisher": {
+        "@id": "https://goderdzimetreveli.com/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://goderdzimetreveli.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Articles and Insights",
+          "item": "https://goderdzimetreveli.com/articles/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Correct Soil Moisture for Deep Ripping"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#webpage",
+      "url": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/",
+      "name": "Correct Soil Moisture for Deep Ripping",
+      "description": "Soil moisture determines whether deep ripping fractures soil or smears it. How to judge the moisture window in the field, and why ripping wet is worse than not ripping.",
+      "isPartOf": {
+        "@id": "https://goderdzimetreveli.com/#website"
+      },
+      "about": {
+        "@id": "https://goderdzimetreveli.com/#person"
+      },
+      "breadcrumb": {
+        "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#breadcrumb"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-02-11T00:00:00+00:00",
+      "dateModified": "2026-08-17T00:00:00+00:00"
+    },
+    {
+      "@type": "Article",
+      "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#article",
+      "isPartOf": {
+        "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#webpage"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://goderdzimetreveli.com/articles/soil-moisture-for-deep-ripping/#webpage"
+      },
+      "headline": "Correct Soil Moisture for Deep Ripping",
+      "description": "Soil moisture determines whether deep ripping fractures soil or smears it. How to judge the moisture window in the field, and why ripping wet is worse than not ripping.",
+      "datePublished": "2026-02-11T00:00:00+00:00",
+      "dateModified": "2026-08-17T00:00:00+00:00",
+      "inLanguage": "en",
+      "articleSection": [
+        "Soil preparation"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://goderdzimetreveli.com/#person",
+        "name": "Goderdzi Metreveli",
+        "url": "https://goderdzimetreveli.com/about/"
+      },
+      "publisher": {
+        "@id": "https://goderdzimetreveli.com/#person"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://goderdzimetreveli.com/wp-content/uploads/deep-ripping-soil-fracture-udabno.jpg",
+        "width": 2000,
+        "height": 1125
+      }
+    }
+  ]
+}

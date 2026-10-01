@@ -1,0 +1,17 @@
+/*
+Theme Name: Goderdzi Metreveli
+Theme URI: https://goderdzimetreveli.com
+Author: Custom build
+Description: Editorial theme for an agricultural executive's professional site. Self-contained SEO, JSON-LD structured data, EN/KA hreflang, breadcrumbs and XML sitemap — no SEO plugin required. No page builder, no external font or script requests.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.6
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: gm
+Tags: custom-menu, featured-images, translation-ready, block-styles
+*/
+
+/* Actual styles live in assets/css/main.css, enqueued from functions.php.
+   This file exists for the WordPress theme header only. */

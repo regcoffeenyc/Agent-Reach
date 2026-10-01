@@ -1,0 +1,63 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://goderdzimetreveli.com/#person",
+      "name": "Goderdzi Metreveli",
+      "url": "https://goderdzimetreveli.com/about/",
+      "description": "Georgian agricultural executive and engineering professional working in large-scale orchard development, soil preparation, irrigation infrastructure, agricultural mechanization and regenerative farming in semi-arid conditions.",
+      "jobTitle": "Agricultural Executive",
+      "knowsAbout": [
+        "Regenerative agriculture",
+        "Almond orchard development",
+        "Semi-arid land development",
+        "Deep ripping and subsoil preparation",
+        "Orchard soil preparation",
+        "Irrigation infrastructure",
+        "Agricultural mechanization",
+        "Erosion control",
+        "Almond processing",
+        "Agricultural export standards"
+      ],
+      "nationality": {
+        "@type": "Country",
+        "name": "Georgia"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://goderdzimetreveli.com/#portrait",
+        "url": "https://goderdzimetreveli.com/wp-content/uploads/goderdzi-metreveli-portrait-orchard.jpg",
+        "caption": "Goderdzi Metreveli"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/CONFIRMED-PROFILE-SLUG/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://goderdzimetreveli.com/#website",
+      "url": "https://goderdzimetreveli.com/",
+      "name": "Goderdzi Metreveli",
+      "description": "Goderdzi Metreveli is an agricultural executive focused on regenerative farming, almond orchards, semi-arid land development, irrigation, mechanization and soil preparation.",
+      "publisher": {
+        "@id": "https://goderdzimetreveli.com/#person"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://goderdzimetreveli.com/#webpage",
+      "url": "https://goderdzimetreveli.com/",
+      "name": "Goderdzi Metreveli | Regenerative Agriculture & Almond Farming",
+      "description": "Goderdzi Metreveli is an agricultural executive focused on regenerative farming, almond orchards, semi-arid land development, irrigation, mechanization and soil preparation.",
+      "isPartOf": {
+        "@id": "https://goderdzimetreveli.com/#website"
+      },
+      "about": {
+        "@id": "https://goderdzimetreveli.com/#person"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
