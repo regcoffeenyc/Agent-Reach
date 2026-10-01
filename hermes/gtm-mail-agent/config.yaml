@@ -1,0 +1,87 @@
+# Hermes Agent profile config — Geo-Tactical Market mail agent
+# Lives at $HERMES_HOME/config.yaml (default ~/.hermes-gtm/config.yaml).
+# Secrets go in .env next to this file, never here.
+
+model:
+  provider: anthropic
+  default: claude-sonnet-4-6        # same model the Make.com agent brains use
+  max_tokens: 8192
+
+fallback_model:
+  provider: anthropic
+  model: claude-haiku-4-5
+
+# One fresh session per run; the skill supplies the procedure, the handoff doc
+# supplies the state. Keep the toolset small: fewer tools, fewer mistakes.
+# web_search is off on purpose: the skill never needs it, and an unattended
+# agent with a search tool has an exfiltration channel (query strings) and a
+# second source of untrusted text.
+tools:
+  enabled:
+    - terminal
+    - file
+  disabled:
+    - browser
+    - web_search
+
+approval:
+  dangerous_commands: true
+  write_approval: false             # the handoff doc and extracted files must be writable unattended
+
+skills:
+  write_approval: true              # the agent may not rewrite its own skills unattended
+  inline_shell: false
+  template_vars: true
+
+mcp_servers:
+  # Gmail via the AutoAuth server. Version is PINNED: this process holds the
+  # mailbox OAuth token, so it must not silently become whatever npm serves
+  # next. Bump the pin deliberately after reading the upstream changelog.
+  #
+  # `tools.include` is a whitelist: send_email, delete_email,
+  # batch_delete_emails, modify_email and the filter/label mutators are
+  # deliberately absent, so the agent cannot send, hide or destroy anything
+  # even if a prompt or an email tells it to. Stale drafts are reported for
+  # Goderdzi to trash by hand.
+  #
+  # The whitelist is enforced by Hermes, not by Google: the token itself
+  # carries gmail.modify. Treat credentials.json as the mailbox password.
+  # It lives inside the profile directory (not the shared ~/.gmail-mcp) so
+  # two profiles never share a token and the preflight can check its mode.
+  gmail:
+    command: npx
+    args: ["-y", "@gongrzhe/server-gmail-autoauth-mcp@1.1.11"]
+    timeout: 120
+    env:
+      GMAIL_OAUTH_PATH: ${HERMES_HOME}/gmail/gcp-oauth.keys.json
+      GMAIL_CREDENTIALS_PATH: ${HERMES_HOME}/gmail/credentials.json
+    tools:
+      include:
+        - search_emails
+        - read_email
+        - download_attachment
+        - draft_email
+        - list_email_labels
+
+  # Optional read-only Google Drive (search + read). Uploads do not fit through
+  # tool payloads anyway; the skill delivers files to Goderdzi instead.
+  gdrive:
+    enabled: false
+    command: npx
+    args: ["-y", "@isaacphi/mcp-gdrive@0.2.0"]
+    env:
+      GDRIVE_CREDS_DIR: ${HERMES_HOME}/gdrive
+      CLIENT_ID: ${GDRIVE_CLIENT_ID}
+      CLIENT_SECRET: ${GDRIVE_CLIENT_SECRET}
+    tools:
+      include:
+        - gdrive_search
+        - gdrive_read_file
+
+gateway:
+  platforms:
+    - type: telegram
+      token: ${TELEGRAM_BOT_TOKEN}
+      allowed_users:
+        - ${TELEGRAM_USER_ID}     # Goderdzi's numeric Telegram id — nobody else may talk to this bot.
+                                  # preflight.sh refuses to start the gateway while this is empty.
